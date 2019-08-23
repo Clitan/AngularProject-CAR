@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <select class="nav-link" [(ngModel)]="product_or_brand" name="product_or_brand">
+                    <option value="1" (click)="setflag()" class="dropdown-item">product</option>
+                    <option value="2" (click)="setflag()" class="dropdown-item">Brand</option>
+                </select>
+            </li>
+            <li [hidden]="product_or_brand==1" class="nav-item">
+                <input [(ngModel)]="addnewBrand" name="addnewBrand" id="addnewBrand" class="form-control ml-4"
+                    placeholder="eg:Aston Martin">
+            </li>
+            <li [hidden]="product_or_brand==1" class="nav-item">
+                <button (click)="addNewBrand()" class="btn btn-outline-info ml-5"> +ADD Brand</button>
+            </li>
+            <li [hidden]="product_or_brand==2" class="nav-item">
+                <a [routerLink]="[ '/add']">
+                    <button class="btn btn-outline-info ml-5"> +ADD</button>
+                </a>
+            </li>
+        </ul>
+        <!-- <form class="form-inline my-2">
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn btn-outline-info ml-2">Search</button>
+        </form> -->
+    </div>
+</nav>
+
+<div class="row">
+    <ng-container *ngFor="let car of carData;index as i">
+        <div class="col-4">
+            <div class="container mt-5">
+                <div class="card mx-auto p-2">
+                    <h5 class="card-header bg-dark white-text text-center py-2">
+                        <strong class="text-white">
+                            {{(i+1)+". "+car.CarName}}
+                        </strong>
+                    </h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <img class="img col-12" [src]="car.imgUrl" />
+                        </div>
+                        <div class="float-right col-4">
+                            <a [routerLink]="[ '/view', car.id ]">
+                                <button class="btn btn-outline-info">More</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

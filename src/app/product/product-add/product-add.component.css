@@ -1,0 +1,6 @@
+div .container{
+  background: #686a6c;
+}
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}

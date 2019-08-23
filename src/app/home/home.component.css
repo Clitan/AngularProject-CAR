@@ -1,0 +1,10 @@
+div.row img:hover{
+transform: scale(0.8);
+}
+div.row img:hover{
+transition: all .2s ease-in-out;
+}
+
+.card{
+    height: 350px; 
+}
